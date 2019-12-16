@@ -1,5 +1,7 @@
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu16.04
 
+MAINTAINER zun1903@gmail.com
+
 # ensure local python is preferred over distribution python
 ENV PATH /usr/local/bin:$PATH
 ENV LANG C.UTF-8
