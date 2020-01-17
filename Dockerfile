@@ -1,6 +1,8 @@
-FROM nvidia/cuda:10.0-cudnn7-runtime-ubuntu16.04
+FROM nvidia/cuda:10.0-cudnn7-runtime-ubuntu18.04
 
-MAINTAINER zun1903@gmail.com
+LABEL maintainer="zun1903@gmail.com" description="Python 3.6.9 with CUDA 10.0 & CuDNN 7" version="1.0"
+
+ENV DEBIAN_FRONTEND noninteractive
 
 # ensure local python is preferred over distribution python
 ENV PATH /usr/local/bin:$PATH
@@ -14,6 +16,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ENV GPG_KEY 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 ENV PYTHON_VERSION 3.6.9
+
+RUN mkdir ~/.gnupg && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
 
 RUN set -ex \
 	\
